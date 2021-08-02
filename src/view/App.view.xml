@@ -1,0 +1,47 @@
+<mvc:View controllerName="com.sam.voting.controller.App" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
+    <App>
+        <pages>
+            <Page title="OpenUI5 says Hello to Blockchain">
+                <headerContent>
+                    <Button icon="sap-icon://settings" text="Connect" press=".connectToMetamask" />
+                </headerContent>
+                <content>
+                    <Panel>
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <Title text="Blockchain based dApp" />
+                                <ToolbarSpacer />                            
+                                <MessageStrip id="account" type="Warning" showIcon="false">
+                                </MessageStrip>
+                            </OverflowToolbar>
+                        </headerToolbar>                     
+                    </Panel>
+                    <MessageStrip text="Candidates List" type="Success" showIcon="true" />
+                    <Table id="idCandidateList" items="{/results}" mode="SingleSelectLeft">
+                        <columns>
+                            <Column>
+                                <Text text="Sl.#" />
+                            </Column>
+                            <Column hAlign="Center">
+                                <Text text="Candidate Name" />
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                                <Text text="Vote Count" />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                    <ObjectIdentifier title="{id}" />
+                                    <Text text="{name}" />
+                                    <ObjectNumber number="{voteCount}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                    <Button text="Vote" icon="sap-icon://account" press=".vote($oController)" />
+                </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>
